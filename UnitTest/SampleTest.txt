@@ -1,0 +1,47 @@
+LM-MAA-00668543:IntergalacticTranslator amanoharan$ ruby TransactionClient.rb 
+Config Validation Successful...
+Enter the Transaction :
+how much is pish tegj glob glob ?
+Input : pish tegj glob glob
+Status : success
+Reason : Transaction Successful...
+pish tegj glob glob is 42 Credits
+================================================
+Continue? Press N to stop :
+Y
+Enter the Transaction :
+how many Credits is glob prok Silver ?
+Input : glob prok Silver
+Status : success
+Reason : Transaction Successful...
+glob prok Silver is 68.0 Credits
+================================================
+Continue? Press N to stop :
+Y
+Enter the Transaction :
+how many Credits is glob prok Gold ?
+Input : glob prok Gold
+Status : success
+Reason : Transaction Successful...
+glob prok Gold is 57800.0 Credits
+================================================
+Continue? Press N to stop :
+Y
+Enter the Transaction :
+how many Credits is glob prok Iron ?
+Input : glob prok Iron
+Status : success
+Reason : Transaction Successful...
+glob prok Iron is 782.0 Credits
+================================================
+Continue? Press N to stop :
+Y
+Enter the Transaction :
+how much wood could a woodchuck chuck if a woodchuck could chuck wood ?
+Input : how much wood could a woodchuck chuck if a woodchuck could chuck wood
+Status : failure
+Reason : Unrecognized Language...
+================================================
+Continue? Press N to stop :
+N   
+

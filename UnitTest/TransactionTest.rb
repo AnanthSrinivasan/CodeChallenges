@@ -1,0 +1,75 @@
+require "../Transaction.rb"
+require "../Response.rb"
+require "../Constants.rb"
+
+# Initialize objects for Testing
+response = Response.new
+response.status = Status::FAILURE
+response.err_msg = ErrorMsg::UNDEFINED
+
+input = "glob glob Silver"
+test = Transaction.new
+
+# 1. Config Validation Test
+# Add some invalid roman in the input.txt
+# Check we are failing with Invalid Configuration
+
+# ================================================
+
+# 2. Config Language Test
+# Remove either code or transaction measure in input
+# Check we are failing with Missing Configuration
+
+input = "glob glob Silver"
+output = test.getCredits(input, response)
+
+puts "Input : #{input}"
+puts "Status : #{output.status}"
+puts "Reason : #{output.err_msg}"
+puts "================================================"
+
+# ================================================
+
+# 3. Invalid Key Test
+# Add some invalid keys in the input
+# Check we are failing with Unrecognized Language
+
+input = "glob glob Silverr"
+output = test.getCredits(input, response)
+
+puts "Input : #{input}"
+puts "Status : #{output.status}"
+puts "Reason : #{output.err_msg}"
+puts "================================================"
+
+# ================================================
+
+# 4. Invalid Key Test
+# Add some invalid keys in the input
+# Check we are failing with Unrecognized Language
+
+input = "glob glob glob glob Silver"
+output = test.getCredits(input, response)
+
+puts "Input : #{input}"
+puts "Status : #{output.status}"
+puts "Reason : #{output.err_msg}"
+puts "================================================"
+
+# ================================================
+
+# 5. Successful Transaction
+# Remove either code or transaction measure in input
+# Check we are failing with Missing Configuration
+
+input = "glob glob Silver"
+output = test.getCredits(input, response)
+
+puts "Input : #{input}"
+puts "Status : #{output.status}"
+puts "Reason : #{output.err_msg}"
+puts "#{input} is #{output.credits} Credits"
+puts "================================================"
+
+# ================================================
+
