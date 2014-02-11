@@ -3,7 +3,7 @@ require_relative "./ConfigProcessor.rb"
 require_relative "./UnitConverter.rb"
 
 # This class computes the single value for the metals
-# involved in the transaction from the configuration
+# involved in the transaction based on the configuration
 
 class ComputeMetal
 	def initialize(parsedConfig)

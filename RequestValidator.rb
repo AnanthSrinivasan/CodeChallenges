@@ -1,10 +1,8 @@
 require_relative "./TranslatorError.rb"
 require_relative "./Constants.rb"
-# Request Validator takes the vocabulary object and
-# validates the incoming request
-# It sends back the response object
-# Response object will contain status of the operation
-# and the error message if the status is a failure
+require_relative "./Vocabulary.rb"
+# Request Validator validates if the given input 
+# has contents only from the vocabulary
 
 class RequestValidator
 	
@@ -13,6 +11,11 @@ class RequestValidator
 		@vocabulary.build
 	end
 	
+	def validateRequest input
+		validateLanguage input
+		validateMetalPos input
+	end
+
 	# Validates whether the input is in recognizable language
 	def validateLanguage input
 		input.split(" ").each { |key| 
@@ -21,6 +24,14 @@ class RequestValidator
 		 }
 	end
 
-# if there is a metal it should be given as the last key.
+	# If input has metal then it should be in the end.
+	def validateMetalPos input
+		if !["Silver","Gold","Iron"].include? input.split(" ").last
+			raise TranslatorError.new(RequestValidator, 
+				ErrorMsg::INVALID_POSITION) 
+		end
+	end
+
+	private :validateLanguage, :validateMetalPos
 
 end

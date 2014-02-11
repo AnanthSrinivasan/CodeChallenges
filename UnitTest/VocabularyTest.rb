@@ -9,9 +9,14 @@ parser.process
 test = Vocabulary.new(parser)
 test.build
 
-code = "glob glob test"
-
+code = "glob glob prok"
 code.chomp.split(" ").each { |e| 
 	puts 'not present...' unless test.find e
 }
+
+code = "glob glob test"
+code.chomp.split(" ").each { |e| 
+	puts 'not present...' unless test.find e
+}
+
 

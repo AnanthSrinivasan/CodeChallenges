@@ -20,6 +20,7 @@ test = Transaction.new
 # Remove either code or transaction measure in input
 # Check we are failing with Missing Configuration
 
+puts "Config Language Test"
 input = "glob glob Silver"
 output = test.getCredits(input, response)
 
@@ -34,6 +35,7 @@ puts "================================================"
 # Add some invalid keys in the input
 # Check we are failing with Unrecognized Language
 
+puts "Invalid Key Test"
 input = "glob glob Silverr"
 output = test.getCredits(input, response)
 
@@ -44,10 +46,25 @@ puts "================================================"
 
 # ================================================
 
-# 4. Invalid Key Test
+# 4. Invalid Metal Position Test
+# Add some invalid keys in the input
+# Check we are failing with Unrecognized Language
+puts "Invalid Metal Position Test"
+input = "glob Silver glob"
+output = test.getCredits(input, response)
+
+puts "Input : #{input}"
+puts "Status : #{output.status}"
+puts "Reason : #{output.err_msg}"
+puts "================================================"
+
+# ================================================
+
+# 5. Invalid Roman Formation Test
 # Add some invalid keys in the input
 # Check we are failing with Unrecognized Language
 
+puts "Invalid Roman Formation Test"
 input = "glob glob glob glob Silver"
 output = test.getCredits(input, response)
 
@@ -58,10 +75,11 @@ puts "================================================"
 
 # ================================================
 
-# 5. Successful Transaction
+# 6. Successful Transaction Test
 # Remove either code or transaction measure in input
 # Check we are failing with Missing Configuration
 
+puts "Successful Transaction Test"
 input = "glob glob Silver"
 output = test.getCredits(input, response)
 

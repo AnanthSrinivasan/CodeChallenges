@@ -60,7 +60,7 @@ class Transaction
 
 	def validateRequest input
 		reqValidator = RequestValidator.new(@parser)
-		reqValidator.validateLanguage input
+		reqValidator.validateRequest input
 	end
 
 	def validateRoman input

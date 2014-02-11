@@ -1,7 +1,7 @@
 require_relative "./ConfigReader.rb"
 
 # Processor class gets the config and parses it.
-# We split the configuration such that One hash stores the
+# We split the configuration such that one hash stores the
 # code and the corresponding roman, while the other one  
 # stores the transaction and corresponding credits.
 # Henceforth we can manipulate through these hashes. 

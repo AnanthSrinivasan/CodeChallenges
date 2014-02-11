@@ -12,7 +12,8 @@ class ErrorMsg
 
 	define :MISSING_CONFIG, "Missing Configuration..."
 	define :INVALID_CONFIG, "Invalid Configuration..."
-	define :INVALID_KEY, "Unrecognized Language..."
+	define :INVALID_KEY, "Invalid Key..."
+	define :INVALID_POSITION, "Invalid Metal Position..."
 	define :INVALID_ROMAN, "Invalid Roman Formation..."
 	define :UNDEFINED, "undefined"
 end

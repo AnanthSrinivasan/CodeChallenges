@@ -9,9 +9,15 @@ parser.process
 
 test = UnitConverter.new(parser)
 
-#puts test.unitToRoman "glob glob Silver"
-
 langTest = LanguageChecker.new
+
+input = 'IIII'
+
+if langTest.roman? input
+	puts test.romanToDec input
+else
+	puts 'Invalid Roman Language...'
+end
 
 input = 'III'
 
