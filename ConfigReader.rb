@@ -13,6 +13,6 @@ class ConfigReader
 	include Singleton
 	
 	def config
-		file = File.read('/Users/amanoharan/Anantha/Projects/Ruby/IntergalacticTranslator/Input.txt')
+		file = File.read('../TextFiles/Input.txt')
 	end	
 end

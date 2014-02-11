@@ -1,0 +1,24 @@
+Description:
+
+   This service is intended to compute the credits for the given transaction.
+
+   Validations such as complying to roman language is done.  
+
+   While computing credits, we take the standard measure from the configuration.
+
+Input:
+
+   Input consists of lines of text detailing the notes on the conversion 
+   between intergalactic units and roman numerals. 
+
+Response:
+
+   Response object consists of the following,
+
+   status   -  Indicates whether the operation is success or failure
+   err-msg  -  If the operation is a failure, err_msg will contain 
+               the reason for the failure
+   object   -  If the operation is a failure, object will contain
+               the details of the object which caused the failure.
+   credits  -  If the operation is a success, credits will hold
+               the details of the computed credits. 

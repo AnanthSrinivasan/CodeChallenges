@@ -1,3 +1,7 @@
+# TranslatorError is derived from StandardError
+# It is raised in all the cases where our 
+# validation fail
+
 class TranslatorError < StandardError
 	attr_reader :object
 	attr_reader :message
