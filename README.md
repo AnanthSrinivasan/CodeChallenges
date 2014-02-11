@@ -1,7 +1,7 @@
 IntergalacticTranslator
 =======================
 
-Description:
+<h4>Description:</h4>
 
    This service is intended to compute the credits for the given transaction.
 
@@ -9,12 +9,12 @@ Description:
 
    While computing credits, we take the standard measure from the configuration.
 
-Input:
+<h4>Input:</h4>
 
    Input consists of lines of text detailing the notes on the conversion 
    between intergalactic units and roman numerals. 
 
-Response:
+<h4>Response:</h4>
 
    Response object consists of the following,
 
@@ -27,11 +27,15 @@ Response:
                the details of the computed credits. 
 
 
-Running the Application:
+<h4>Running the Application:</h4>
 
-In the console try, "ruby TransactionClient.rb"
+1) Copy the code to your local development environment
+2) Do a bundle install to get the related gems installed
+   2.a) If the bundler is not installed, 
+   2.b) Do "gem install bundler"
+3) From the folder path run "ruby TransactionClient.rb"
 
-Sample Inputs and their response
+<h5>Sample Inputs and their response</h5>
 
 	how much is pish tegj glob glob ?  
 	Input : glob prok Iron
