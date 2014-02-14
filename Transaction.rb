@@ -75,18 +75,17 @@ class Transaction
 
 	def getMetalValue metal
 		computeMetal = ComputeMetal.new(@parser)
-		computeMetal.buildMetalHash
-		computeMetal.segregateMetals
+		silver, gold, iron = computeMetal.computeMetals
 
 		case metal
 			when "Silver"
-				computeMetal.silver
+				silver
 
 			when "Gold"
-				computeMetal.gold
+				gold
 
 			when "Iron"
-				computeMetal.iron
+				iron
 		end
 	end
 

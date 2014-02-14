@@ -7,9 +7,8 @@ parser = ConfigProcessor.new(config)
 parser.process
 
 test = ComputeMetal.new(parser)
-test.buildMetalHash
-test.segregateMetals
+silver, gold, iron = test.computeMetals
 
-puts test.silver
-puts test.gold
-puts test.iron
+puts silver
+puts gold
+puts iron
