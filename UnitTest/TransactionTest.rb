@@ -1,6 +1,5 @@
 require "../Transaction.rb"
 require "../Response.rb"
-require "../Constants.rb"
 
 # Initialize objects for Testing
 response = Response.new
