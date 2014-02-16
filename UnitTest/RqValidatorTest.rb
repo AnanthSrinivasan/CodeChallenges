@@ -1,14 +1,16 @@
-require '../ConfigProcessor.rb'
-require '../ConfigReader.rb'
 require "../RequestValidator.rb"
+require '../Configuration.rb'
 
-config = ConfigReader.instance
-parser = ConfigProcessor.new(config)
-parser.process
-test = RequestValidator.new(parser)
+config = Configuration.new
+cfgObj = config.getConfig
 
-input = "glob glob prok"
-puts test.validateRequest input
+test = RequestValidator.new 
 
-input = "glob Silver prok"
-puts test.validateRequest input
+# input = "pish tegj glob glob"
+# puts test.validateRequest input, cfgObj.vocabulary
+
+# input = "glob Silver prok"
+# puts test.validateRequest input, cfgObj.vocabulary
+
+input = "glob glob Silver"
+puts test.validateRequest input, cfgObj.vocabulary

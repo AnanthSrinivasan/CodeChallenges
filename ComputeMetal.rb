@@ -1,38 +1,32 @@
 require_relative "./ConfigReader.rb"
 require_relative "./ConfigProcessor.rb"
 require_relative "./UnitConverter.rb"
+require_relative "./MetalObject.rb"
 
 # This class computes the single value for the metals
 # involved in the transaction based on the configuration
 
 # computeMetals computes the value for each metals 
-# and returns back. We don't want to have separate getters 
-# for these metals as if it were to be a remote call 
-# we would end up making three remote calls.
+# and returns the metalObject. We don't want to have separate 
+# getters for these metals as if it were to be a remote call 
+# then we would end up making three remote calls.
 
 class ComputeMetal
-	def initialize(parsedConfig)
-		@cfgProcessed = parsedConfig
-		@converter = UnitConverter.new(@cfgProcessed)
-
-		@silver = 0
-		@gold = 0
-		@iron = 0
+	def initialize()
+		@metalObj = MetalObject.new
+		@converter = UnitConverter.new 
 	end
 
-	def computeMetals
-		metalHash = buildMetalHash 
-
+	def computeMetals unitHash, txnHash
+		metalHash = buildMetalHash unitHash, txnHash
 		segregateMetals metalHash
-
-		return @silver, @gold, @iron
+		return @metalObj
 	end
 
-	def buildMetalHash
+	def buildMetalHash unitHash, txnHash
 		metalHash = {}
-		txnHash = @cfgProcessed.transactions
 		txnHash.each_pair { |key, value|
-			val = @converter.unitToRoman key
+			val = @converter.unitToRoman key, unitHash
 			k = val + " " + key.split(" ").last
 			metalHash[k] = value
 		}
@@ -48,13 +42,13 @@ class ComputeMetal
 
 			case metal
 				when "Silver"
-					@silver = computeValue(quantity, credits)
+					@metalObj.silver = computeValue(quantity, credits)
 
 				when "Gold"
-					@gold = computeValue(quantity, credits)
+					@metalObj.gold = computeValue(quantity, credits)
 
 				when "Iron"
-					@iron = computeValue(quantity, credits)
+					@metalObj.iron = computeValue(quantity, credits)
 			end
 		}
 	end

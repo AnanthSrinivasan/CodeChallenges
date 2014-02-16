@@ -3,13 +3,12 @@ require_relative "./LanguageChecker.rb"
 
 class UnitConverter
 
-	def initialize(parsedConfig)
-		@cfgProcessed = parsedConfig
+	def initialize()
+
 	end
 	
-	def unitToRoman input
+	def unitToRoman input, unitHash
 		val = ""
-		unitHash = @cfgProcessed.units
 		input.split(" ").each { |unit|
 			if unitHash.has_key?(unit)
 				val = val + unitHash[unit] 

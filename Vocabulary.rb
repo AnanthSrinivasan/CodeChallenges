@@ -1,20 +1,14 @@
-# This class is responsible for building the vocabulary.
-# Since we don't define any special meaning to the keys
-# in the vocabulary, we delegate the job of finding 
-# whether a key is present or not into the same object
+# This class is responsible for building the vocabulary
+# based on the keys present in the configuration
 
 class Vocabulary
 
-	def initialize(parsedConfig)
+	def initialize()
 		@vocabArray = []
-		@cfgProcessed = parsedConfig
 	end
 	
 	# Builds the vocabulary from the configuration
-	def build
-		unitHash = @cfgProcessed.units
-		txnHash = @cfgProcessed.transactions
-
+	def buildVocabulary unitHash, txnHash
 		unitHash.keys.each { |code|
 			@vocabArray.push(code)
 		}
@@ -29,9 +23,5 @@ class Vocabulary
 		return @vocabArray
 	end
 
-	# Find whether a key is present in the vocabulary
-	def find key
-		@vocabArray.include? key
-	end
-
 end
+

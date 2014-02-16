@@ -9,28 +9,21 @@ require_relative "./ConfigReader.rb"
 class ConfigProcessor
 
 	def initialize(config)
-		@txnHash = {}
-		@unitHash = {}
 		@cfg = config 	# ConfigReader instance...
 	end
 
 	def process
+		unitHash = {}
+		txnHash = {}
 		@cfg.config.each_line do |line|
 			key, value = line.chomp.split(" is ")
 			if line[/(Silver|Gold|Iron)/].nil?
-				@unitHash[key] = value
+				unitHash[key] = value
 			else
-				@txnHash[key] = value
+				txnHash[key] = value
 			end
 		end
+		return unitHash, txnHash
 	end
-
-	def transactions
-		@txnHash
-	end
-
-	def units
-		@unitHash
-	end	
 
 end

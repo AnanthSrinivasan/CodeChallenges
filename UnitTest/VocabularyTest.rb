@@ -1,22 +1,14 @@
-require '../ConfigProcessor.rb'
-require '../ConfigReader.rb'
 require '../Vocabulary.rb'
+require '../Configuration.rb'
 
-config = ConfigReader.instance
-parser = ConfigProcessor.new(config)
-parser.process
+config = Configuration.new
+cfgObj = config.getConfig
 
-test = Vocabulary.new(parser)
-test.build
+txnHash = cfgObj.txnHash
+unitHash = cfgObj.unitHash
 
-code = "glob glob prok"
-code.chomp.split(" ").each { |e| 
-	puts 'not present...' unless test.find e
-}
+test = Vocabulary.new
+puts test.buildVocabulary(unitHash, txnHash)
 
-code = "glob glob test"
-code.chomp.split(" ").each { |e| 
-	puts 'not present...' unless test.find e
-}
 
 

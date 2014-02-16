@@ -1,14 +1,15 @@
-require '../ConfigProcessor.rb'
-require '../ConfigReader.rb'
 require '../ComputeMetal.rb'
+require '../Configuration.rb'
 
-config = ConfigReader.instance
-parser = ConfigProcessor.new(config)
-parser.process
+config = Configuration.new
+cfgObj = config.getConfig
 
-test = ComputeMetal.new(parser)
-silver, gold, iron = test.computeMetals
+txnHash = cfgObj.txnHash
+unitHash = cfgObj.unitHash
 
-puts silver
-puts gold
-puts iron
+test = ComputeMetal.new 
+metalObj = test.computeMetals unitHash, txnHash
+
+puts metalObj.silver
+puts metalObj.gold
+puts metalObj.iron

@@ -1,40 +1,31 @@
-require_relative './ConfigProcessor.rb'
-require_relative './ConfigReader.rb'
-require_relative './ConfigValidator.rb'
-require_relative './Vocabulary.rb'
 require_relative './RequestValidator.rb'
 require_relative './UnitConverter.rb'
-require_relative './ComputeMetal.rb'
 require_relative './TranslatorError.rb'
+require_relative './Configuration.rb'
 
 # Exposes a public interface "getCredits"
 
 class Transaction
+
 	def initialize()
-		config = ConfigReader.instance
-		@parser = ConfigProcessor.new(config)
-		@parser.process
-
-		cfgValidator = ConfigValidator.new(@parser)
-		cfgValidator.validateConfig
-		cfgValidator.validateLanguage
-
-		@converter = UnitConverter.new(@parser)
+		config = Configuration.new
+		@cfg = config.getConfig
 	end
 
 	def getCredits(input, response)
 		begin
 			# Validates the request against library
-			validateRequest input			
+			validateRequest input, @cfg.vocabulary			
 
 			# Gets the roman value for the input
-			romanStr = @converter.unitToRoman input		
+			converter = UnitConverter.new 
+			romanStr = converter.unitToRoman input, @cfg.unitHash	
 
 			# Checks if the given roman is valid
 			validateRoman romanStr			
 
 			# Gets the decimal equivalent for roman
-			decVal = @converter.romanToDec romanStr
+			decVal = converter.romanToDec romanStr
 
 			# If the input has metal, then get the single value 
 			# then compute credits by multiplying with the given  
@@ -58,9 +49,9 @@ class Transaction
 		end
 	end
 
-	def validateRequest input
-		reqValidator = RequestValidator.new(@parser)
-		reqValidator.validateRequest input
+	def validateRequest input, vocabArray
+		reqValidator = RequestValidator.new
+		reqValidator.validateRequest input, vocabArray
 	end
 
 	def validateRoman input
@@ -74,18 +65,15 @@ class Transaction
 	end
 
 	def getMetalValue metal
-		computeMetal = ComputeMetal.new(@parser)
-		silver, gold, iron = computeMetal.computeMetals
-
 		case metal
 			when "Silver"
-				silver
+				@cfg.metalObject.silver
 
 			when "Gold"
-				gold
+				@cfg.metalObject.gold
 
 			when "Iron"
-				iron
+				@cfg.metalObject.iron
 		end
 	end
 
@@ -94,4 +82,4 @@ class Transaction
 
 end
 
-
+# Remove roman numeral gem

@@ -6,21 +6,20 @@ require_relative "./Vocabulary.rb"
 
 class RequestValidator
 	
-	def initialize(parsedConfig)
-		@vocabulary = Vocabulary.new(parsedConfig)
-		@vocabulary.build
+	def initialize
+
 	end
 	
-	def validateRequest input
-		validateLanguage input
-		validateMetalPos input
+	def validateRequest input, vocabArray
+		validateLanguage(input, vocabArray)
+		validateMetalPos input if containsMetal? input
 	end
 
 	# Validates whether the input is in recognizable language
-	def validateLanguage input
+	def validateLanguage input, vocabArray
 		input.split(" ").each { |key| 
 			raise TranslatorError.new(RequestValidator, 
-				ErrorMsg::INVALID_KEY) unless @vocabulary.find key
+				ErrorMsg::INVALID_KEY) unless vocabArray.include? key
 		 }
 	end
 
@@ -32,6 +31,14 @@ class RequestValidator
 		end
 	end
 
-	private :validateLanguage, :validateMetalPos
+	# Check if the input contains Metal in it?
+	def containsMetal? input
+		input.split(" ").each { |key| 
+			return true if ["Silver","Gold","Iron"].include? key
+		}
+		return false
+	end
+
+	private :validateLanguage, :validateMetalPos, :containsMetal?
 
 end

@@ -46,9 +46,26 @@ puts "================================================"
 
 # ================================================
 
+# 4. No Metal in Input Test
+# Add metal in invalid position in the input
+# Check we are failing with Invalid Metal Position
+
+puts "No Metal in Input Test"
+input = "pish tegj glob glob"
+output = test.getCredits(input, response)
+
+puts "Input : #{input}"
+puts "Status : #{output.status}"
+puts "Reason : #{output.err_msg}"
+puts "#{input} is #{output.credits} Credits"
+puts "================================================"
+
+# ================================================
+
 # 4. Invalid Metal Position Test
-# Add some invalid keys in the input
-# Check we are failing with Unrecognized Language
+# Add metal in invalid position in the input
+# Check we are failing with Invalid Metal Position
+
 puts "Invalid Metal Position Test"
 input = "glob Silver glob"
 output = test.getCredits(input, response)
