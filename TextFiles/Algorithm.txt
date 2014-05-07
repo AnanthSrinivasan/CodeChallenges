@@ -1,0 +1,36 @@
+This Algorithm has to be called everytime when we navigate through the navigation
+sequence. we have to pass the input as given below and get the best possible way
+to navigate from the given low channel no. to the high channel no.
+
+Input
+
+	1. low and high channel that is viewable
+	2. blocked channels array
+
+Compute steps required to move from low to high through,
+
+1. UP Button
+	steps = (high - low) - (blockedChannels)
+
+blockedChannels can be computed by checking the blocked channel between low and high 
+
+2. Down Button
+	steps = HighestViewable - (high - low) - (blockedChannels between low and high)
+
+blockedChannels can be computed by excluding the blocked channels between low and high 
+
+3. Number Buttons
+	steps = No. of digits present in the channel
+
+
+Best way to reach from low to high can be computed as follows,
+
+bestNavigationSteps = minSteps(up, down, number)
+bestNavigationAction = action through which bestNavigationSteps is obtained.
+
+We have to handle the below conditions and change/reverse the above computations
+
+1. low == high
+2. low < high
+3. low > high
+
