@@ -13,3 +13,5 @@ end
 File.open("TextFiles/Input.txt").each_with_index { |line, count|
     puts "#{count} > #{line}"
 }
+
+puts 12.is_a? Fixnum

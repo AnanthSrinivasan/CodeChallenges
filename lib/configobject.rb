@@ -7,11 +7,14 @@
 # viewableChannelCount - Number of channels viewable
 # navigationSequence - Array of channels to navigate
 
-class ConfigObject
+class Configobject
 	attr_accessor :rangeHash
 	attr_accessor :blockedChannelCount
 	attr_accessor :blockedChannel
 	attr_accessor :viewableChannelCount
 	attr_accessor :navigationSequence
 
+	def initialize
+		
+	end
 end
