@@ -24,11 +24,9 @@ class FileProcessor
 			# and fills the configuration object
 			file.each_with_index { |line, count|
 				first, *rest = line.split(" ")
-				range = {}
 				if count == 0
-					range[:low] = line.split(" ").first
-					range[:high] = line.split(" ").last
-					@cfgObject.rangeHash = range
+					@cfgObject.lowestChannel = line.split(" ").first
+					@cfgObject.highestChannel = line.split(" ").last
 				end
 
 				if count == 1
@@ -48,7 +46,9 @@ end
 
 # contents = FileProcessor.instance.fileContents
 
-# puts contents.rangeHash
-# puts contents.blockedChannelCount
-# puts contents.viewableChannelCount
+# puts contents.lowestChannel.inspect
+# puts contents.highestChannel.inspect
+
+# puts contents.navigationSequence.inspect
+# puts contents.viewableChannelCount.inspect
 
