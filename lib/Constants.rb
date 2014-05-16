@@ -7,6 +7,15 @@ class Status
 	define :FAILURE, "failure"
 end
 
+class Action
+	include Ruby::Enum
+
+	define :UP, "up"
+	define :DOWN, "down"
+	define :NUMBER, "number"
+	define :UNDEFINED, "undefined"
+end
+
 class ErrorMsg
 	include Ruby::Enum
 

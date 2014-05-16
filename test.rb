@@ -54,23 +54,23 @@ File.open('TextFiles/Input.txt') do |file|
 end
 
 
-low = 10 
-high = 20
+# low = 10 
+# high = 20
 
-if(high >= low)
-	puts "high greater"
-end
+# if(high >= low)
+# 	puts "high greater"
+# end
 
-blockedChannel = ["18", "19", "15"]
-navseq = ["12", "14", "17", "1", "20"]
+# blockedChannel = ["18", "19", "15"]
+# navseq = ["15", "14", "17", "1", "20"]
 
-puts "common : #{blockedChannel & navseq}"
-if !(blockedChannel & navseq).empty?
-	puts "common present"
-else
-	puts "no "
+# puts "common : #{blockedChannel & navseq}"
+# if !(blockedChannel & navseq).empty?
+# 	puts "common present"
+# else
+# 	puts "no "
 
-end
+# end
 
 # if(blockedChannel.uniq.sort == navseq.uniq.sort)
 # blockedChannel.each { |val| 
@@ -86,3 +86,57 @@ end
 
 #to find union
 #(a-b) | (b-a)
+
+
+#puts 12345.to_s.size
+
+# a = 10
+# b = 20
+# c = 5
+
+# puts [a, b, c].index([a, b, c].min)
+
+# a = ["18", "19"]
+# a.map! { |e| e.to_i }
+# puts a.inspect
+
+# range = 107..104
+
+# 107.downto(104).each { |e| puts e }
+
+#(1...8).reverse.each { |x| puts x }
+
+
+
+class Foo
+
+  def initialize(num)
+    raise ArgumentError.new("Not valid number") if num > 1000
+    @num = num
+  end 
+
+end
+
+begin
+
+f = Foo.new(4000) #=> n `initialize': not valid (RuntimeError)
+
+rescue ArgumentError => e
+
+	puts e.message
+
+end
+
+class Person
+	attr_accessor :name
+  def initialize(name)
+    raise ArgumentError, "No name present" if name.empty?
+    @name = name
+  end
+
+end
+
+fred = Person.new("")
+puts "Name is #{fred.name}"
+
+

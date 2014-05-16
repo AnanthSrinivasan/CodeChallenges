@@ -1,6 +1,6 @@
 require_relative './ValidationError.rb'
 require_relative './Constants.rb'
-# Validates whether the given configuration is as per the constraints. 
+# Validates whether the given configuration is as per the STB constraints. 
 # Raise error if any of the constraints are violated. 
 
 class SkycastValidator
@@ -45,8 +45,8 @@ class SkycastValidator
 	end
 
 	def missingConfig
-		if ( (@config.lowestChannel.nil? && 
-			  @config.highestChannel.nil?) 		||
+		if ( @config.lowestChannel.nil? 		||
+			 @config.highestChannel.nil? 		||
 			 @config.blockedChannel.empty? 		||
 			 @config.navigationSequence.empty? )	
 			raise ValidationError.new(SkycastValidator, 

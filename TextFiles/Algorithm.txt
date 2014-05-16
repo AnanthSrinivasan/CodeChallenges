@@ -25,7 +25,7 @@ blockedChannels can be computed by excluding the blocked channels between low an
 
 Best way to reach from low to high can be computed as follows,
 
-bestNavigationSteps = minSteps(up, down, number)
+minNavigationSteps = minSteps(up, down, number)
 bestNavigationAction = action through which bestNavigationSteps is obtained.
 
 We have to handle the below conditions and change/reverse the above computations
@@ -34,3 +34,8 @@ We have to handle the below conditions and change/reverse the above computations
 2. low < high
 3. low > high
 
+
+Navigator Object
+
+Apply config to stb
+stb will validate and tell if config is applied successfully or not
