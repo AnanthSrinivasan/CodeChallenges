@@ -18,25 +18,27 @@ class FileProcessor
 		@cfgObject = Configobject.new
 	end
 
-	def fileContents
-		File.open('TextFiles/Input.txt') do |file|
+	def fileContents filename
+		File.open(filename) do |file|
 			# get the range, blocked channels and channel sequence
 			# and fills the configuration object
 			file.each_with_index { |line, count|
 				first, *rest = line.split(" ")
 				if count == 0
-					@cfgObject.lowestChannel = line.split(" ").first
-					@cfgObject.highestChannel = line.split(" ").last
+					@cfgObject.lowestChannel = line.split(" ").first.to_i
+					@cfgObject.highestChannel = line.split(" ").last.to_i
 				end
 
 				if count == 1
 					@cfgObject.blockedChannelCount = first.to_i
 					@cfgObject.blockedChannel = rest
+					@cfgObject.blockedChannel.map! { |e| e.to_i } 
 				end
 
 				if count == 2
 					@cfgObject.viewableChannelCount = first.to_i
 					@cfgObject.navigationSequence = rest
+					@cfgObject.navigationSequence.map! { |e| e.to_i }
 				end
 			}
 		end
@@ -44,10 +46,11 @@ class FileProcessor
 	end	
 end
 
-# contents = FileProcessor.instance.fileContents
+# contents = FileProcessor.instance.fileContents('../TextFiles/Input.txt')
 
 # puts contents.lowestChannel.inspect
 # puts contents.highestChannel.inspect
+# puts contents.blockedChannel.inspect
 
 # puts contents.navigationSequence.inspect
 # puts contents.viewableChannelCount.inspect

@@ -10,13 +10,12 @@ describe ClicksCalculator do
 		@clkCalcRequest = ClicksCalculatorRequest.new 
 		@clkCalcRequest.source = 14
 		@clkCalcRequest.target = 17
-		@clkCalcRequest.blockedChannel = ["15", "18", "19"]
+		@clkCalcRequest.blockedChannel = [15, 18, 19]
 		@clkCalcRequest.lowestChannel = 1
 		@clkCalcRequest.highestChannel = 20
 		@clkCalcResponse = ClicksCalculatorResponse.new
 		@clkCalcResponse.action = Action::UNDEFINED
 		@clkCalcResponse.clicks = -1
-
 		@clkCalcResponse
 	end
 
@@ -44,7 +43,7 @@ describe ClicksCalculator do
 		it "asserts 2 minimum clicks and up action required to move from 107 to 103" do
 			@clkCalcRequest.lowestChannel = 103
 			@clkCalcRequest.highestChannel = 108
-			@clkCalcRequest.blockedChannel = ["104"]
+			@clkCalcRequest.blockedChannel = [104]
 			@clkCalcRequest.source = 107
 			@clkCalcRequest.target = 103
 			@clkCalcResponse = @clkCalc.getMinClicksAction @clkCalcRequest
@@ -76,7 +75,7 @@ describe ClicksCalculator do
 		it "asserts 3 minimum clicks and number action required to move from 13 to 100" do
 			@clkCalcRequest.lowestChannel = 1
 			@clkCalcRequest.highestChannel = 200
-			@clkCalcRequest.blockedChannel = ["78", "79", "80", "3"]
+			@clkCalcRequest.blockedChannel = [78, 79, 80, 3]
 			@clkCalcRequest.source = 13
 			@clkCalcRequest.target = 100
 			@clkCalcResponse = @clkCalc.getMinClicksAction @clkCalcRequest
@@ -87,7 +86,7 @@ describe ClicksCalculator do
 		it "asserts 1 minimum click and up action required to move from 77 to 81" do
 			@clkCalcRequest.lowestChannel = 1
 			@clkCalcRequest.highestChannel = 100
-			@clkCalcRequest.blockedChannel = ["78", "79", "80", "3"]
+			@clkCalcRequest.blockedChannel = [78, 79, 80, 3]
 			@clkCalcRequest.source = 77
 			@clkCalcRequest.target = 81
 			@clkCalcResponse = @clkCalc.getMinClicksAction @clkCalcRequest
@@ -98,15 +97,13 @@ describe ClicksCalculator do
 		it "asserts 1 minimum click and up action required to move from 106 to 107" do
 			@clkCalcRequest.lowestChannel = 103
 			@clkCalcRequest.highestChannel = 108
-			@clkCalcRequest.blockedChannel = ["104"]
+			@clkCalcRequest.blockedChannel = [104]
 			@clkCalcRequest.source = 106
 			@clkCalcRequest.target = 107
 			@clkCalcResponse = @clkCalc.getMinClicksAction @clkCalcRequest
 			@clkCalcResponse.clicks.should eql(1)
 			@clkCalcResponse.action.should eql(Action::UP)
 		end
-
-
 	end
 
 end

@@ -4,7 +4,7 @@ require_relative '../lib/FileProcessor.rb'
 describe SkycastValidator do
 
 	before :each do
-		contents = FileProcessor.instance.fileContents
+		contents = FileProcessor.instance.fileContents('TextFiles/Input.txt')
 		@csValidator = SkycastValidator.new contents
 	end
 
@@ -89,18 +89,18 @@ describe SkycastValidator do
 
 		# Channel Range Test
 		it "validates lowestChannel is in range as per constraints" do
-			@csValidator.config.lowestChannel = "0"
-			@csValidator.config.highestChannel = "20"
+			@csValidator.config.lowestChannel = 0
+			@csValidator.config.highestChannel = 20
 		end
 
 		it "validates highestChannel is in range per constraints" do
-			@csValidator.config.lowestChannel = "1"
-			@csValidator.config.highestChannel = "10001"
+			@csValidator.config.lowestChannel = 1
+			@csValidator.config.highestChannel = 10001
 		end
 
 		it "validates lowestChannel is lesser or equal to highestChannel" do
-			@csValidator.config.lowestChannel = "20"
-			@csValidator.config.highestChannel = "10"
+			@csValidator.config.lowestChannel = 20
+			@csValidator.config.highestChannel = 10
 		end
 		# End - Channel Range Test
 
@@ -116,33 +116,33 @@ describe SkycastValidator do
 
 		# BlockedChannels Range Test
 		it "validates blockedChannels are in range against lowestChannel" do
-			@csValidator.config.lowestChannel = "13"
-			@csValidator.config.blockedChannel = ["12", "15"]
+			@csValidator.config.lowestChannel = 13
+			@csValidator.config.blockedChannel = [12, 15]
 		end
 
 		it "validates blockedChannels are in range against highestChannel" do
-			@csValidator.config.highestChannel = "14"
-			@csValidator.config.blockedChannel = ["12", "16"]
+			@csValidator.config.highestChannel = 14
+			@csValidator.config.blockedChannel = [12, 16]
 		end
 		# End - BlockedChannels Range Test
 
 		# NavigationSequence Range Test
 		it "validates navigationSequence is in range against lowestChannel" do
-			@csValidator.config.lowestChannel = "2"
-			@csValidator.config.navigationSequence = ["15", "14", "17", "1", "17"]
+			@csValidator.config.lowestChannel = 2
+			@csValidator.config.navigationSequence = [15, 14, 17, 1, 17]
 		end
 
 		it "validates navigationSequence is in range against highestChannel" do
-			@csValidator.config.highestChannel = "19"
-			@csValidator.config.navigationSequence = ["15", "14", "17", "1", "20"]
+			@csValidator.config.highestChannel = 19
+			@csValidator.config.navigationSequence = [15, 14, 17, 1, 20]
 		end
 		# End - NavigationSequence Range Test
 
 		# Intersection Test
 		it "validates navigationSequence elements are not in the blocked list" do
 			@csValidator.config.blockedChannelCount = 3
-			@csValidator.config.blockedChannel = ["13", "16", "20"]
-			@csValidator.config.navigationSequence = ["15", "12", "17", "1", "20"]
+			@csValidator.config.blockedChannel = [13, 16, 20]
+			@csValidator.config.navigationSequence = [15, 12, 17, 1, 20]
 		end
 		# End - Intersection Test
 

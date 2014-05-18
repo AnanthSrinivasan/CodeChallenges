@@ -73,9 +73,9 @@ class SkycastValidator
 	end
 
 	def lowHighRange
-		if ( @config.lowestChannel.to_i <=0 || 
-			 @config.highestChannel.to_i > 10000 ||
-			 @config.highestChannel.to_i < @config.lowestChannel.to_i )
+		if ( @config.lowestChannel <= 0		|| 
+			 @config.highestChannel > 10000 ||
+			 @config.highestChannel < @config.lowestChannel )
 			raise ValidationError.new(SkycastValidator, 
 				ErrorMsg::CHANNELS_NOT_IN_RANGE) 
 		end
@@ -102,8 +102,8 @@ class SkycastValidator
 
 	def blockedChannelBoundary
 		if ( @config.blockedChannel.any? { |val| 
-			val.to_i < @config.lowestChannel.to_i  ||
-			val.to_i > @config.highestChannel.to_i } )
+			val < @config.lowestChannel  ||
+			val > @config.highestChannel } )
 			raise ValidationError.new(SkycastValidator, 
 				ErrorMsg::BLOCKED_CHANNEL_RANGE_EXCEEDED) 
 		end
@@ -118,8 +118,8 @@ class SkycastValidator
 
 	def navigationSequenceBoundary
 		if ( @config.navigationSequence.any? { |val| 
-			val.to_i < @config.lowestChannel.to_i ||
-			val.to_i > @config.highestChannel.to_i } )
+			val < @config.lowestChannel 	||
+			val > @config.highestChannel 	})
 			raise ValidationError.new(SkycastValidator, 
 				ErrorMsg::NAVIGATION_SEQUENCE_RANGE_EXCEEDED) 
 		end

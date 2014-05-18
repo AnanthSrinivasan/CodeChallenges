@@ -16,7 +16,7 @@ class ClicksCalculator
 		@source = clicksCalculatorRequest.source
 		@target = clicksCalculatorRequest.target
 		@blockedList = clicksCalculatorRequest.blockedChannel
-		@blockedList.map! { |e| e.to_i }
+		#@blockedList.map! { |e| e.to_i }
 	end
 
 	def getMinClicksAction(clicksCalculatorRequest)
@@ -36,7 +36,7 @@ class ClicksCalculator
 	end
 
 	def up 
-		if (@source < @target) 	# 14 - 17
+		if (@source < @target) 	
 			@target - @source - channelsBlockedInRange
 		elsif (@source > @target)
 			((@highestChannel - @lowestChannel) - 

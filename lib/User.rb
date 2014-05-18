@@ -17,7 +17,7 @@ class User
 	
 	def navigateSequence
 		begin
-			config = FileProcessor.instance.fileContents
+			config = FileProcessor.instance.fileContents('TextFiles/Input.txt')
 		#-TODO-
 			stb = STB.new
 			stb.applyConfig config

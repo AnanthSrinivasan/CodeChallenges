@@ -127,16 +127,29 @@ rescue ArgumentError => e
 
 end
 
-class Person
-	attr_accessor :name
-  def initialize(name)
-    raise ArgumentError, "No name present" if name.empty?
-    @name = name
-  end
+# class Person
+# 	attr_accessor :name
+#   def initialize(name)
+#     raise ArgumentError, "No name present" if name.empty?
+#     @name = name
+#   end
 
+# end
+
+# fred = Person.new("")
+# puts "Name is #{fred.name}"
+
+#for(current++ != blocked);
+
+blockedChannel = ["18", "20", "15"]
+blockedChannel.map! {|e| e.to_i}
+current = 17
+loop do
+	current+=1
+	break if !blockedChannel.include?(current)
 end
 
-fred = Person.new("")
-puts "Name is #{fred.name}"
-
-
+puts current
+# loop do
+# 	break if 
+# end
