@@ -9,10 +9,6 @@ describe SkycastValidator do
 	end
 
 	describe "#new" do
-		it "raises error when wrong number of arguments passed" do
-			expect{ SkycastValidator.new }.to raise_error( ArgumentError )
-		end
-
 		it "takes Configobject as parameter and returns SkycastValidator" do
 			@csValidator.should be_an_instance_of SkycastValidator
 		end

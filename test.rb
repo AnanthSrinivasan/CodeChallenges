@@ -1,7 +1,9 @@
-array = [15, 14, 17, 1, 17]
+array = [15, 14, 17, 1, 17, 18]
 
 array.each_with_index do |element,index|
-	puts "#{array[index]}, #{array[index+1]}"		
+	puts "#{array[index]}, #{array[index+1]}"	
+	puts index	
+	break if index == array.size-2
 end
 
 a = ['sda', 'sdb', 'sdc', 'sdd', 'dds']

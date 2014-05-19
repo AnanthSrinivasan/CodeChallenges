@@ -6,20 +6,19 @@ require_relative "./ClicksCalculatorResponse.rb"
 class ClicksCalculator
 
 	# Note: members are initialized only in initMembers and 
-	# are not set again by any function, we are doing this to
-	# avoid duplication of code. Better way is to pass the required
-	# data around to the specific function. Since we are not setting
-	# any members outside of this function it is ok to put in one place
+	# are not set again by any function. 
+	# Better way is to pass the required data around to the specific function. 
+	# Since we are not setting any members outside of this function 
+	# it is ok to put in one place to avoid duplication
 	def initMembers clicksCalculatorRequest
 		@lowestChannel = clicksCalculatorRequest.lowestChannel
 		@highestChannel = clicksCalculatorRequest.highestChannel
 		@source = clicksCalculatorRequest.source
 		@target = clicksCalculatorRequest.target
 		@blockedList = clicksCalculatorRequest.blockedChannel
-		#@blockedList.map! { |e| e.to_i }
 	end
 
-	def getMinClicksAction(clicksCalculatorRequest)
+	def getMinClicksAction clicksCalculatorRequest
 		initMembers clicksCalculatorRequest
 
 		upClicks = up 
@@ -35,6 +34,7 @@ class ClicksCalculator
 		return clicksCalculatorResponse
 	end
 
+	# Gives steps required to move from source to target through UP action
 	def up 
 		if (@source < @target) 	
 			@target - @source - channelsBlockedInRange
@@ -46,6 +46,7 @@ class ClicksCalculator
 		end
 	end
 
+	# Gives steps required to move from source to target through DOWN action
 	def down
 		if (@source < @target) 	# 14 - 17
 			((@highestChannel - @lowestChannel) - 
@@ -57,6 +58,7 @@ class ClicksCalculator
 		end
 	end
 
+	# Gives steps required to move from source to target through NUMBER action
 	def number 
 		@target.to_s.size
 	end

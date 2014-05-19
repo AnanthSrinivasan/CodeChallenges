@@ -42,9 +42,14 @@ describe Remote do
 		end
 
 		it "allows press of a number button and carries out the action on stb" do
+			@stb.currentChannel = 15
 			@remote.pressButton('1')
-			@remote.pressButton('3')
-			@stb.currentChannel.should eql(15)
+			@remote.pressButton('4')
+
+			@remote.pressButton('1')
+			@remote.pressButton('7')
+			@stb.currentChannel.should eql(17)
 		end
+
 	end
 end

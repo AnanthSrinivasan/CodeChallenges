@@ -16,7 +16,6 @@ describe ClicksCalculator do
 		@clkCalcResponse = ClicksCalculatorResponse.new
 		@clkCalcResponse.action = Action::UNDEFINED
 		@clkCalcResponse.clicks = -1
-		@clkCalcResponse
 	end
 
 	describe "#getMinClicksAction" do
