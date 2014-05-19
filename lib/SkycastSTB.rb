@@ -5,6 +5,7 @@ class SkycastSTB
 	attr_accessor :previousChannel
 	attr_accessor :currentChannel
 
+	@@channelNumber = ""
 	# STB maintains default, previous and current channel state
 	def initialize 
 		@config = nil
@@ -53,8 +54,11 @@ class SkycastSTB
 		swap(@currentChannel, @previousChannel)
 	end
 
-	def applyChannel
-
+	def applyChannel number
+		puts "number : #{number}"
+		@previousChannel = @currentChannel
+		@currentChannel = number.to_i
+		@@channelNumber = "" 
 	end
 
 	def swap currentChannel, previousChannel
@@ -62,4 +66,16 @@ class SkycastSTB
 		@currentChannel = previousChannel
 		@previousChannel = temp
 	end
+
+#hack
+	def number num
+		@@channelNumber = @@channelNumber + num
+		applyChannel(@@channelNumber) if @@channelNumber == nextInNavigationSequence
+	end
+
+	def nextInNavigationSequence
+		index = @config.navigationSequence.index { |x| x == @currentChannel }  #=> 1
+		@config.navigationSequence[index+1].to_s
+	end
+#hack	
 end

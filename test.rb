@@ -153,3 +153,7 @@ puts current
 # loop do
 # 	break if 
 # end
+
+seq = [10, 13, 13, 100, 99, 98, 77, 81]
+index = seq.index{|x| x == 10 }
+puts seq[index+1]

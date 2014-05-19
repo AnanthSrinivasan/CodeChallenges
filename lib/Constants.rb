@@ -37,6 +37,8 @@ class ErrorMsg
 						"Navigation sequence contain elements which are out of range..."
 	define :COMMONALITY_PRESENT, 
 						"Common elements present in blocked and viewable channels list..."
+	define :INVALID_INPUT_TO_REMOTE,
+						"Invalid button has been pressed..."						
 	define :UNDEFINED, 
-						"undefined"
+						"undefined..."
 end

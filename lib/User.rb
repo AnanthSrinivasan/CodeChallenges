@@ -2,12 +2,17 @@ require_relative "./FileProcessor.rb"
 require_relative "./ValidationError.rb"
 require_relative "./SkycastValidator.rb"
 
-# Configuration class is a cohesive unit which holds the config
-# required for the system. 
+# User is the orchestrator who wants to navigate through the
+# given sequence as mentioned in the configuration
+
 # Steps:
 # 1. Load the configuration from the file
 # 2. Apply the configuration to the SkycastSTB
-# 3. Navigate the sequence
+# 3. Pairs up the remote with the stb
+# 4. Identifies minimum steps required to navigate
+#	 step by step to complete the sequence
+# 5. Uses the remote object to follow the action
+#	 which would help navigate through minimum steps
 
 class User
 
@@ -17,21 +22,23 @@ class User
 	
 	def navigateSequence
 		begin
+			# loads up the configuration from file
 			config = FileProcessor.instance.fileContents('TextFiles/Input.txt')
-		#-TODO-
+		
+			# boot up stb and apply configuration into it
 			stb = STB.new
 			stb.applyConfig config
-			# apply configuration into setup box
 
-			# let the stb validates the constraints and throw error if any
-			# validateConfig contents has to be done in SkycastSTB object. 
-
-			# catch it and display back to the client 
+			# pair up the remote object with the stb
+			remote = remote.new
+			remote.pairUp stb
 
 			# Navigate the sequence
 
 		rescue ValidationError => e 
-			
+
+		rescue ArgumentError => e
+
 		end
 	end
 

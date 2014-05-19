@@ -10,7 +10,7 @@ describe SkycastSTB do
 	end	
 
 	describe "#new" do
-		it "takes configuration as parameter and returns a SkycastSTB object" do
+		it "creates a SkycastSTB object" do
 			@stb.should be_an_instance_of SkycastSTB
 		end
 	end
@@ -62,7 +62,7 @@ describe SkycastSTB do
 			@stb.currentChannel.should eql(1)
 		end
 
-		it "increments the currentChannel by 1 and rotates back and considers blocked channels" do
+		it "increments the currentChannel by 1, rotates back and considers blocked channels" do
 			@config.blockedChannel = [1, 2]
 			@config.navigationSequence = [17, 14, 17, 5, 17]
 			@stb.applyConfiguration @config
@@ -92,7 +92,7 @@ describe SkycastSTB do
 			@stb.currentChannel.should eql(20)
 		end
 
-		it "increments the currentChannel by 1 and rotates back and considers blocked channels" do
+		it "increments the currentChannel by 1, rotates back and considers blocked channels" do
 			@config.blockedChannel = [19, 20]
 			@stb.applyConfiguration @config
 			@stb.currentChannel = 1
@@ -108,7 +108,13 @@ describe SkycastSTB do
 			@stb.channelBack # - 16
 			@stb.currentChannel.should eql(16)
 		end
+	end
 
+	describe "#applyChannel" do
+		it "applies the given channel and sets it to currentChannel" do
+			@stb.applyChannel 14
+			@stb.currentChannel.should eql(14)
+		end
 	end
 
 end
