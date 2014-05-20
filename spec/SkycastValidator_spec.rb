@@ -45,6 +45,7 @@ describe SkycastValidator do
 		end
 
 		it "validates blockedChannel is empty" do
+			@csValidator.config.blockedChannelCount = 1
 			@csValidator.config.blockedChannel = []
 		end
 

@@ -63,6 +63,7 @@ class ClicksCalculator
 		@target.to_s.size
 	end
 
+	# Fill the viewList with the channels present in the range
 	def channelsInRange
 		viewList = []
 		if (@source < @target)
@@ -73,10 +74,12 @@ class ClicksCalculator
 		return viewList	
 	end
 
+	# Get the Intersection of channels in the view range and blocked channels
 	def channelsBlockedInRange
 		(channelsInRange & @blockedList).count
 	end
 
+	# Subtract the blocked channels in range from the total blocked channels
 	def channelsBlockedOutRange
 		@blockedList.count - channelsBlockedInRange
 	end

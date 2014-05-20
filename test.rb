@@ -151,11 +151,56 @@ loop do
 	break if !blockedChannel.include?(current)
 end
 
-puts current
+#puts current
 # loop do
 # 	break if 
 # end
-
+prev = 98
+curr = 77
 seq = [10, 13, 13, 100, 99, 98, 77, 81]
-index = seq.index{|x| x == 10 }
-puts seq[index+1]
+#seq = [1, 100, 1, 101]
+# index = seq.rindex{|x| x == 100 }
+# puts index
+# puts seq[index+1]
+seq.unshift(1)
+puts seq.inspect
+nextVal = 0
+seq.each_with_index do |element, index|
+	puts seq[index]
+	puts seq[index+1]
+	# if (seq[index] == prev &&
+	#     seq[index+1] == curr)
+	# 	nextVal = seq[index+2]
+	# end
+	break if index == seq.size-2
+end
+puts "next #{nextVal}"
+
+
+2.times do
+	puts 'hi'
+end
+
+# number = 123
+
+# 123-100 = 23
+# 23-10 = 3
+
+# 123
+# 123/10=12 - 10
+# 12/10=1 - 100
+# 1/10=0 - 1000
+
+# 1000/10 = 100
+# 123/100 = 1
+# 123%100 = 23
+
+# 100/10 = 10
+# 23/10 = 2
+# 23%10 = 3
+
+# 10/10 = 1
+# 3/1 = 3
+# 3%1 = 0
+
+1234.to_s.chars.map(&:to_i).each {|e| puts e}

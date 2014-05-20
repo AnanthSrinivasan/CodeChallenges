@@ -3,7 +3,7 @@
 class Remote
 
 	def initialize
-		@stb = nil		
+		@stb = nil
 	end
 	
 	# Remote object has to be created and paired up with STB
@@ -13,7 +13,8 @@ class Remote
 	
 	# Based on the input to the remote corresponding action 
 	# on the tv will be performed
-	def pressButton button
+	def pressButton(button)
+		puts "Remote Button : #{button.to_s} pressed"
 		case button
 			when '0'..'9'
 				@stb.channelNumber button
@@ -24,8 +25,9 @@ class Remote
 			when 'b'
 				@stb.channelBack
 			else
-				raise ValidationError.new(SkycastValidator, 
+				raise ValidationError.new(Remote, 
 					ErrorMsg::INVALID_INPUT_TO_REMOTE) 
 		end
 	end
+
 end

@@ -47,7 +47,8 @@ class SkycastValidator
 	def missingConfig
 		if ( @config.lowestChannel.nil? 		||
 			 @config.highestChannel.nil? 		||
-			 @config.blockedChannel.empty? 		||
+			 ( @config.blockedChannelCount != 0 &&
+			   @config.blockedChannel.empty? )	||
 			 @config.navigationSequence.empty? )	
 			raise ValidationError.new(SkycastValidator, 
 					ErrorMsg::MISSING_CONFIG) 

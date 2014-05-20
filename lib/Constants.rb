@@ -13,6 +13,7 @@ class Action
 	define :UP, "up"
 	define :DOWN, "down"
 	define :NUMBER, "number"
+	define :BACK, "back"
 	define :UNDEFINED, "undefined"
 end
 
