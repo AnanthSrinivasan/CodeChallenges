@@ -22,7 +22,6 @@ require_relative "./ValidationError.rb"
 class User
 
 	def setupTV filename
-		puts filename
 		response = Response.new
 		begin
 			@config = FileProcessor.instance.fileContents(filename)

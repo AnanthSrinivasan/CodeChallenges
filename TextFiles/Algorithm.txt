@@ -4,38 +4,34 @@ to navigate from the given low channel no. to the high channel no.
 
 Input
 
-	1. low and high channel that is viewable
+	1. lowest and highest channel that is viewable
 	2. blocked channels array
+	3. source
+	4. target
 
-Compute steps required to move from low to high through,
+Compute steps required to move from source to target through,
+
+Lets compute for the case where source is less than target
 
 1. UP Button
-	steps = (high - low) - (blockedChannels)
-
-blockedChannels can be computed by checking the blocked channel between low and high 
+	steps = (target - source) - (blockedChannels between target and source)
 
 2. Down Button
-	steps = HighestViewable - (high - low) - (blockedChannels between low and high)
-
-blockedChannels can be computed by excluding the blocked channels between low and high 
-
+	steps = (Highest - Lowest) - (target - source) - 
+			(blockedChannels outside the target and source range) + 1
+ 
 3. Number Buttons
 	steps = No. of digits present in the channel
 
-
-Best way to reach from low to high can be computed as follows,
+Best way to reach from source to target can be computed as follows,
 
 minNavigationSteps = minSteps(up, down, number)
 bestNavigationAction = action through which bestNavigationSteps is obtained.
 
 We have to handle the below conditions and change/reverse the above computations
 
-1. low == high
-2. low < high
-3. low > high
+1. source == target
+2. source < target
+3. source > target
 
 
-Navigator Object
-
-Apply config to stb
-stb will validate and tell if config is applied successfully or not

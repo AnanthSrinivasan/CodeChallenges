@@ -1,6 +1,6 @@
-require "./User.rb"
-require "./Response.rb"
-require "./Constants.rb"
+require_relative "./User.rb"
+require_relative "./Response.rb"
+require_relative "./Constants.rb"
 
 # Initialize response objects
 response = Response.new
@@ -8,7 +8,7 @@ response.status = Status::FAILURE
 response.err_msg = ErrorMsg::UNDEFINED
 
 user = User.new
-setupResponse = user.setupTV('../TextFiles/Input.txt')
+setupResponse = user.setupTV('TextFiles/Input.txt')
 puts setupResponse.err_msg
 
 if setupResponse.status == "success"
