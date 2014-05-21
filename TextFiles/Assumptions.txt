@@ -1,0 +1,8 @@
+Assumptions:
+
+1. when stb boots the default, previous and current channel 
+	will point to the lowest channel.
+2. when the source and the target are same while navigating
+	in the sequence then it is considered as no clicks required. 
+
+

@@ -24,7 +24,6 @@ class SkycastSTB
 		@defaultChannel = @config.lowestChannel.to_i
 		@previousChannel = @config.lowestChannel.to_i
 		@currentChannel = @config.lowestChannel.to_i
-		#@currentChannel = @config.navigationSequence.first.to_i
 	end
 
 	# Moves the current channel up by 1 and considers blocked channel
@@ -83,10 +82,6 @@ class SkycastSTB
 	end
 
 	def nextInNavigationSequence
-		# index = @config.navigationSequence.index { |x| x == @currentChannel } 
-		# @config.navigationSequence[index+1].to_s
-		# require 'pry'
-		# binding.pry
 		navigationSequence = Marshal.load(Marshal.dump(@config.navigationSequence))
 		navigationSequence = navigationSequence.unshift(@defaultChannel)
 		navigationSequence = navigationSequence.unshift(@previousChannel)
