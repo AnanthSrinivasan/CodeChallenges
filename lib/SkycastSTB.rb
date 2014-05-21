@@ -33,18 +33,14 @@ class SkycastSTB
 		if @currentChannel == @config.highestChannel
 			@currentChannel = @config.lowestChannel
 			# while rotating back ensure current channel is not in blocked list
-			puts "Channel Number : #{@currentChannel} set..."
-			puts "previous : #{@previousChannel}"
-			puts "current  : #{@currentChannel}"
+			logStatus @previousChannel, @currentChannel
 			return
 		end
 		#loop until current channel rests for the non blocked channel
 		loop do
 			break if !@config.blockedChannel.include?(@currentChannel+=1)
 		end
-		puts "Channel Number : #{@currentChannel} set..."
-		puts "previous : #{@previousChannel}"
-		puts "current  : #{@currentChannel}"
+		logStatus @previousChannel, @currentChannel
 	end
 
 	# Moves the current channel down by 1 and considers blocked channel
@@ -52,25 +48,19 @@ class SkycastSTB
 		@previousChannel = @currentChannel
 		if @currentChannel == @config.lowestChannel 
 			@currentChannel = @config.highestChannel
-			puts "Channel Number : #{@currentChannel} set..."
-			puts "previous : #{@previousChannel}"
-			puts "current  : #{@currentChannel}"
+			logStatus @previousChannel, @currentChannel
 			return
 		end
 		loop do
 			break if !@config.blockedChannel.include?(@currentChannel-=1)
 		end
-		puts "Channel Number : #{@currentChannel} set..."
-		puts "previous : #{@previousChannel}"
-		puts "current  : #{@currentChannel}"
+		logStatus @previousChannel, @currentChannel
 	end
 
 	# Moves to the previous channel
 	def channelBack
 		swap(@currentChannel, @previousChannel)
-		puts "Channel Number : #{@currentChannel} set..."
-		puts "previous : #{@previousChannel}"
-		puts "current  : #{@currentChannel}"
+		logStatus @previousChannel, @currentChannel
 	end
 
 	# Forms the channel number and applies it as the current channel
@@ -83,9 +73,7 @@ class SkycastSTB
 		@previousChannel = @currentChannel
 		@currentChannel = number.to_i
 		@@chnNumber = "" 
-		puts "Channel Number : #{@currentChannel} set..."
-		puts "previous : #{@previousChannel}"
-		puts "current  : #{@currentChannel}"
+		logStatus @previousChannel, @currentChannel
 	end
 
 	def swap currentChannel, previousChannel
@@ -114,5 +102,12 @@ class SkycastSTB
 		return nextChn.to_s
 	end
 
-	private :applyChannel, :swap, :nextInNavigationSequence
+	def logStatus previous, current
+		puts "previous : #{previous}"
+		puts "current  : #{current}"
+		puts "Channel Number : #{current} set..."
+	end
+
+	private :applyChannel, :swap, 
+			:nextInNavigationSequence, :logStatus
 end

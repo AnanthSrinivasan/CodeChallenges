@@ -47,11 +47,9 @@ class FileProcessor
 end
 
 # contents = FileProcessor.instance.fileContents('../TextFiles/Input.txt')
-
 # puts contents.lowestChannel.inspect
 # puts contents.highestChannel.inspect
 # puts contents.blockedChannel.inspect
-
 # puts contents.navigationSequence.inspect
 # puts contents.viewableChannelCount.inspect
 

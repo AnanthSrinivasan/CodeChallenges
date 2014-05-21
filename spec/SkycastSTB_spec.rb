@@ -35,7 +35,7 @@ describe SkycastSTB do
 
 	describe "#applyConfig" do
 		it "applies the configuration to the stb and performs validation" do
-			config = FileProcessor.instance.fileContents('TextFiles/TestInput.txt')
+			config = FileProcessor.instance.fileContents('TextFiles/TestInput2.txt')
 			expect{ @stb.applyConfiguration config }.to raise_error(ValidationError)
 		end
 	end

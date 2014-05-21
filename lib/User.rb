@@ -22,6 +22,7 @@ require_relative "./ValidationError.rb"
 class User
 
 	def setupTV filename
+		puts filename
 		response = Response.new
 		begin
 			@config = FileProcessor.instance.fileContents(filename)
@@ -71,7 +72,7 @@ class User
 				action = clkCalcResponse.action 
 				clicks = clkCalcResponse.clicks
 
-				# Override action and clicks if we can reach 
+				# Override action and clicks, if we can reach 
 				# the target through back action. 
 				if @stb.previousChannel == target
 					clicks = 1
@@ -84,7 +85,6 @@ class User
 				sumClicks += clicks
 				break if index == @config.navigationSequence.size-2
 			end
-
 		rescue ValidationError => e 
 			response.status = Status::FAILURE
 			response.err_msg = e.message
@@ -122,10 +122,10 @@ class User
 				@remote.pressButton('u')
 			when Action::DOWN
 				@remote.pressButton('d')
-			when Action::NUMBER
-				@remote.pressButton(number.to_s)
 			when Action::BACK
 				@remote.pressButton('b')
+			when Action::NUMBER
+				@remote.pressButton(number.to_s)
 		end	
 	end
 
@@ -149,9 +149,8 @@ class User
 
 end
 
-
-user = User.new
-response = user.setupTV('../TextFiles/Input.txt')
-response = user.navigateSequence 
-puts response.clicks
+# user = User.new
+# response = user.setupTV('../TextFiles/Input.txt')
+# response = user.navigateSequence 
+# puts response.clicks
 

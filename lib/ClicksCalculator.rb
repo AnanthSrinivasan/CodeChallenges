@@ -40,7 +40,7 @@ class ClicksCalculator
 			@target - @source - channelsBlockedInRange
 		elsif (@source > @target)
 			((@highestChannel - @lowestChannel) - 
-					(@source - @target) - channelsBlockedOutRange) + 1
+			(@source - @target) - channelsBlockedOutRange) + 1
 		else
 			0 # if source and target are same no Clicks are considered
 		end
@@ -49,8 +49,8 @@ class ClicksCalculator
 	# Gives steps required to move from source to target through DOWN action
 	def down
 		if (@source < @target) 	# 14 - 17
-			((@highestChannel - @lowestChannel) - 
-					(@target - @source) - channelsBlockedOutRange) + 1
+			( (@highestChannel - @lowestChannel) - 
+			  (@target - @source) - channelsBlockedOutRange) + 1
 		elsif (@source > @target)
 			@source - @target - channelsBlockedInRange
 		else
