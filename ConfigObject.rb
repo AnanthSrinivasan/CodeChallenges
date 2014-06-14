@@ -11,6 +11,6 @@ class ConfigObject
 	attr_accessor :txnHash
 	attr_accessor :unitHash
 	attr_accessor :vocabulary
-	attr_accessor :metalObject
+	attr_accessor :metalArray
 
 end

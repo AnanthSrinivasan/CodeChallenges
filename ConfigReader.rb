@@ -16,3 +16,9 @@ class ConfigReader
 		file = File.read('../TextFiles/Input.txt')
 	end	
 end
+
+
+
+# cfg = ConfigReader.instance
+# puts File.absotule_path "Input.txt"
+

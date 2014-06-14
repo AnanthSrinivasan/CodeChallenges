@@ -31,10 +31,10 @@ class Configuration
 		vocabArray = configVocabulary(unitHash, txnHash)
 
 		# Generates the metal values 
-		metalObj = configMetals(unitHash, txnHash)
+		metalArray = configMetals(unitHash, txnHash)
 
 		# Finally construct the fully baked config Object and return
-		constructObject(unitHash, txnHash, vocabArray, metalObj)
+		constructObject(unitHash, txnHash, vocabArray, metalArray)
 
 		return @configObject
 	end
@@ -60,11 +60,11 @@ class Configuration
 		metals.computeMetals(unitHash, txnHash)
 	end
 
-	def constructObject unitHash, txnHash, vocabArray, metalObj
+	def constructObject unitHash, txnHash, vocabArray, metalArray
 		@configObject.txnHash = txnHash
 		@configObject.unitHash = unitHash
 		@configObject.vocabulary = vocabArray
-		@configObject.metalObject = metalObj
+		@configObject.metalArray = metalArray
 	end
 
 	private :readConfig, :validateConfig

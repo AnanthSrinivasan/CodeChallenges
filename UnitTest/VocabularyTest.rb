@@ -9,6 +9,3 @@ unitHash = cfgObj.unitHash
 
 test = Vocabulary.new
 puts test.buildVocabulary(unitHash, txnHash)
-
-
-

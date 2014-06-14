@@ -12,7 +12,7 @@ class RequestValidator
 	
 	def validateRequest input, vocabArray
 		validateLanguage(input, vocabArray)
-		validateMetalPos input if containsMetal? input
+		# validateMetalPos input if containsMetal? input
 	end
 
 	# Validates whether the input is in recognizable language
@@ -23,22 +23,23 @@ class RequestValidator
 		 }
 	end
 
-	# If input has metal then it should be in the end.
-	def validateMetalPos input
-		if !["Silver","Gold","Iron"].include? input.split(" ").last
-			raise TranslatorError.new(RequestValidator, 
-				ErrorMsg::INVALID_POSITION) 
-		end
-	end
+	# # If input has metal then it should be in the end.
+	# def validateMetalPos input
+	# 	if !["Silver","Gold","Iron"].include? input.split(" ").last
+	# 		raise TranslatorError.new(RequestValidator, 
+	# 			ErrorMsg::INVALID_POSITION) 
+	# 	end
+	# end
 
-	# Check if the input contains Metal in it?
-	def containsMetal? input
-		input.split(" ").each { |key| 
-			return true if ["Silver","Gold","Iron"].include? key
-		}
-		return false
-	end
+	# # Check if the input contains Metal in it?
+	# def containsMetal? input
+	# 	input.split(" ").each { |key| 
+	# 		return true if ["Silver","Gold","Iron"].include? key
+	# 	}
+	# 	return false
+	# end
 
-	private :validateLanguage, :validateMetalPos, :containsMetal?
+	private :validateLanguage
+	# private :validateMetalPos, :containsMetal?
 
 end

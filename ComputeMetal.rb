@@ -13,14 +13,13 @@ require_relative "./MetalObject.rb"
 
 class ComputeMetal
 	def initialize()
-		@metalObj = MetalObject.new
 		@converter = UnitConverter.new 
 	end
 
 	def computeMetals unitHash, txnHash
 		metalHash = buildMetalHash unitHash, txnHash
-		segregateMetals metalHash
-		return @metalObj
+		metalArray = segregateMetals metalHash
+		return metalArray
 	end
 
 	def buildMetalHash unitHash, txnHash
@@ -34,23 +33,19 @@ class ComputeMetal
 	end
 
 	def segregateMetals metalHash
-		metalHash.each_pair { |key, val|  
+		metalObjArray = []
+		metalHash.each_pair { |key, val|  	# II Silver = 34 C
 			metal = key.split(" ").last		#metal name
 			credits = val.split(" ").first	#credit value
 			romanStr = key.split(" ")[0]	#roman value
 			quantity = @converter.romanToDec(romanStr)
 
-			case metal
-				when "Silver"
-					@metalObj.silver = computeValue(quantity, credits)
-
-				when "Gold"
-					@metalObj.gold = computeValue(quantity, credits)
-
-				when "Iron"
-					@metalObj.iron = computeValue(quantity, credits)
-			end
+			metalObj = MetalObject.new
+			metalObj.type = metal
+			metalObj.value = computeValue(quantity, credits)
+			metalObjArray.push (metalObj)
 		}
+		metalObjArray
 	end
 
 	def computeValue quantity, credits
@@ -62,3 +57,13 @@ class ComputeMetal
 end
 
 
+# case metal
+# 	when "Silver"
+# 		@metalObj.silver = computeValue(quantity, credits)
+
+# 	when "Gold"
+# 		@metalObj.gold = computeValue(quantity, credits)
+
+# 	when "Iron"
+# 		@metalObj.iron = computeValue(quantity, credits)
+# end

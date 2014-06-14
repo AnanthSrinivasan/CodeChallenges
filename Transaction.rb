@@ -30,8 +30,8 @@ class Transaction
 			# If the input has metal, then get the single value 
 			# then compute credits by multiplying with the given  
 			# input else return just the dec equivalent for roman
-			if hasMetal(input)
-				metalValue = getMetalValue input.split(" ").last 
+			if hasMetal(input.split(" ").last)
+				metalValue = getMetalValue input.split(" ").last
 				output = decVal.to_f * metalValue.to_f
 			else
 				output = decVal
@@ -60,21 +60,14 @@ class Transaction
 			ErrorMsg::INVALID_ROMAN) unless langChecker.roman? input
 	end
 
-	def hasMetal input
-		["Silver","Gold","Iron"].include? input.split(" ").last
+	def hasMetal metal
+		@cfg.metalArray.any? { |metal_element| metal_element.type == metal }
 	end
 
 	def getMetalValue metal
-		case metal
-			when "Silver"
-				@cfg.metalObject.silver
-
-			when "Gold"
-				@cfg.metalObject.gold
-
-			when "Iron"
-				@cfg.metalObject.iron
-		end
+		@cfg.metalArray.each { |metalelement|  
+			return metalelement.value if metalelement.type == metal
+		}
 	end
 
 	private :validateRequest, :validateRoman
@@ -83,3 +76,14 @@ class Transaction
 end
 
 # Remove roman numeral gem
+		# case metal
+		# 	when "Silver"
+		# 		@cfg.metalArray.silver
+
+		# 	when "Gold"
+		# 		@cfg.metalArray.gold
+
+		# 	when "Iron"
+		# 		@cfg.metalArray.iron
+		# end
+

@@ -1,0 +1,62 @@
+From: /Users/amanoharan/Applications/IntergalacticTranslator/UnitTest/ConverterTest.rb @ line 41 :
+
+    36: end
+    37: 
+    38: input = 'X 1010'
+    39: 
+    40: require 'pry'
+ => 41: binding.pry
+    42: 
+    43: result = test.convert input, unitHash 
+    44: 
+    45: puts "result #{result}"
+
+[1] pry(main)> input
+=> "X 1010"
+[2] pry(main)> unitHash
+=> {"glob"=>"I", "prok"=>"V", "pish"=>"X", "tegj"=>"L"}
+[3] pry(main)> test.convert input, unitHash
+=> ""
+[4] pry(main)> unitHash["X"] = "1010"
+=> "1010"
+[5] pry(main)> input = "X"
+=> "X"
+[6] pry(main)> test.convert input, unitHash
+TypeError: no implicit conversion of Fixnum into String
+from /Users/amanoharan/Applications/IntergalacticTranslator/UnitConverter.rb:33:in `+'
+[7] pry(main)> exit
+/Users/amanoharan/Applications/IntergalacticTranslator/UnitConverter.rb:33:in `+': no implicit conversion of Fixnum into String (TypeError)
+	from /Users/amanoharan/Applications/IntergalacticTranslator/UnitConverter.rb:33:in `block in convert'
+	from /Users/amanoharan/Applications/IntergalacticTranslator/UnitConverter.rb:28:in `each'
+	from /Users/amanoharan/Applications/IntergalacticTranslator/UnitConverter.rb:28:in `convert'
+	from ConverterTest.rb:43:in `<main>'
+LM-MAA-00668543:UnitTest amanoharan$ ruby ConverterTest.rb 
+Invalid Roman Language...
+3
+42
+
+From: /Users/amanoharan/Applications/IntergalacticTranslator/UnitTest/ConverterTest.rb @ line 41 :
+
+    36: end
+    37: 
+    38: input = 'X 1010'
+    39: 
+    40: require 'pry'
+ => 41: binding.pry
+    42: 
+    43: result = test.convert input, unitHash 
+    44: 
+    45: puts "result #{result}"
+
+[1] pry(main)> unitHash["X" ] = "1010"
+=> "1010"
+[2] pry(main)> input = "X"
+=> "X"
+[3] pry(main)> test.convert input, unitHash
+=> "10"
+[4] pry(main)> unitHash["X" ] = "101012324234"
+=> "101012324234"
+[5] pry(main)> test.convert input, unitHash
+=> ""
+[6] pry(main)> exit
+result 

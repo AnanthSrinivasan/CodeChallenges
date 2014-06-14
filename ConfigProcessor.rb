@@ -17,7 +17,7 @@ class ConfigProcessor
 		txnHash = {}
 		@cfg.config.each_line do |line|
 			key, value = line.chomp.split(" is ")
-			if line[/(Silver|Gold|Iron)/].nil?
+			if line[/(Credits)/].nil?
 				unitHash[key] = value
 			else
 				txnHash[key] = value
@@ -27,3 +27,6 @@ class ConfigProcessor
 	end
 
 end
+
+
+# if line[/(Silver|Gold|Iron)/].nil?

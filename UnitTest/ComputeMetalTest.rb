@@ -8,8 +8,9 @@ txnHash = cfgObj.txnHash
 unitHash = cfgObj.unitHash
 
 test = ComputeMetal.new 
-metalObj = test.computeMetals unitHash, txnHash
+metalArray = test.computeMetals unitHash, txnHash
 
-puts metalObj.silver
-puts metalObj.gold
-puts metalObj.iron
+metalArray.each { |element| 
+	puts "#{element.type} : #{element.value}"
+}
+
