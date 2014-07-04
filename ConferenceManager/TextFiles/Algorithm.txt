@@ -1,0 +1,13 @@
+Algorithm:
+
+1. Read the input and keep it in hash, lets call it talks_hash
+2. Create the session object 
+3. Pick up the talks from talks_hash and fill in the session object
+4. Session object has to be filled based on the type.
+5. Create the track object
+6. Add the filled session object to the track
+7. After All the talks are added to tracks, we are done. 
+8. Output the filled tracks in the response. 
+
+
+   
