@@ -4,8 +4,8 @@ require_relative "../lib/FileProcessor.rb"
 describe Track do
 
 	before :each do
-		contents = FileProcessor.instance.file_contents('TextFiles/conference.txt')
-		@track = Track.new(contents.talks_data, contents.sessions_data)
+		@config = FileProcessor.instance.file_contents('TextFiles/conference.txt')
+		@track = Track.new
 	end
 
 	describe "#new" do
@@ -14,8 +14,12 @@ describe Track do
 		end
 	end
 
+	describe "#arrange" do
+		it "should take talks info and sessions info and return contents" do
+			contents = @track.arrange(@config.talks_data, @config.sessions_data) 
+			contents.size.should eql(12) 
+		end
+	end
+
 end
 
-
-# it should add sessions
-# validate the session array count

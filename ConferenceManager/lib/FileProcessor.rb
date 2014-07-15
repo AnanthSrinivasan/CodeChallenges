@@ -1,5 +1,6 @@
 require "singleton"
 require_relative "./ConfigObject.rb"
+require_relative "./Constants.rb"
 
 # This class will serve as a adapter to read the file contents
 # Currently we are reading the input from a file, we might read 
@@ -15,33 +16,34 @@ class FileProcessor
 	include Singleton
 	
 	def initialize
-		@cfgObject = ConfigObject.new
 		@Session = Struct.new(:duration, :start, :type)
+		@Talk = Struct.new(:name, :duration)
 	end
 
 	def file_contents(filename)
-		events_hash = {}
-		sessions_array = []
+		cfgObject = ConfigObject.new
+		events = []
+		sessions = []
 		
 		File.open(filename) do |file|
 			file.each do |line|
 				if line[/(session)/].nil?
 					key, value = line.reverse.split(" ", 2).map(&:reverse).reverse
-					events_hash[key] = value
+					if value.include?('min') || value.include?('lightning')
+						value = value.include?('min') ? value.split('min')[0].to_i : LIGHTNING
+						events.push(@Talk.new(key, value))
+					else
+						raise StandardError, "Value is nil"
+					end
 				else
 					data = line.split('|')
-					sessions_array.push(@Session.new(data[0], data[1], data[2]))
+					sessions.push(@Session.new(data[0], data[1], data[2]))
 				end				
 			end
 		end
-		@cfgObject.talks_data =  events_hash
-		@cfgObject.sessions_data = sessions_array
-		@cfgObject
-	end	
+		cfgObject.talks_data =  events
+		cfgObject.sessions_data = sessions
+		cfgObject
+	end		
 end
-
-# contents = FileProcessor.instance.file_contents('../TextFiles/conference.txt')
-# puts contents.talks_data
-# puts contents.sessions_data
-
 

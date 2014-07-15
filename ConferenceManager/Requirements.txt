@@ -15,16 +15,16 @@ Note that depending on how you choose to complete this problem, your solution ma
  
 Test input:
  
-Writing Fast Tests Against Enterprise Rails 60min
-Overdoing it in Python 45min
-Lua for the Masses 30min
-Ruby Errors from Mismatched Gem Versions 45min
-Common Ruby Errors 45min
-Rails for Python Developers lightning
-Communicating Over Distance 60min
-Accounting-Driven Development 45min
-Woah 30min
-Sit Down and Write 30min
+Writing Fast Tests Against Enterprise Rails 60min - 9
+Overdoing it in Python 45min - 10
+Lua for the Masses 30min - 1045
+Ruby Errors from Mismatched Gem Versions 45min - 1115
+Common Ruby Errors 45min 1
+Rails for Python Developers lightning 145
+Communicating Over Distance 60min 150
+Accounting-Driven Development 45min 250
+Woah 30min 335
+Sit Down and Write 30min 405
 Pair Programming vs Noise 45min
 Rails Magic 60min
 Ruby on Rails: Why We Should Move On 60min
